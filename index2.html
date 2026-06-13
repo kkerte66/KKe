@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>❤️</title>
+
+<style>
+body{
+margin:0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(-45deg,#ff9a9e,#fad0c4,#ffdde1,#ffc3a0);
+background-size:400% 400%;
+animation:bg 8s ease infinite;
+font-family:Arial,sans-serif;
+overflow:hidden;
+}
+
+@keyframes bg{
+0%{background-position:0% 50%}
+50%{background-position:100% 50%}
+100%{background-position:0% 50%}
+}
+
+.container{
+text-align:center;
+z-index:10;
+}
+
+h1{
+font-size:2.2rem;
+color:white;
+text-shadow:0 0 15px rgba(0,0,0,.3);
+}
+
+button{
+padding:15px 35px;
+font-size:1.2rem;
+border:none;
+border-radius:50px;
+cursor:pointer;
+transition:.3s;
+}
+
+#yes{
+background:#4CAF50;
+color:white;
+}
+
+#no{
+background:#ff4d6d;
+color:white;
+}
+
+.heart{
+position:absolute;
+font-size:25px;
+animation:float 8s linear infinite;
+}
+
+@keyframes float{
+from{
+transform:translateY(100vh);
+opacity:1;
+}
+to{
+transform:translateY(-120px);
+opacity:0;
+}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<h1>Will you go on a date with me? ❤️</h1>
+
+<button id="yes">Yes 😍</button>
+<button id="no">No 😭</button>
+</div>
+
+<script>
+
+const noBtn=document.getElementById("no");
+const yesBtn=document.getElementById("yes");
+
+let yesSize=1;
+
+function moveNo(){
+const x=Math.random()*(window.innerWidth-120);
+const y=Math.random()*(window.innerHeight-80);
+
+noBtn.style.position="absolute";
+noBtn.style.left=x+"px";
+noBtn.style.top=y+"px";
+
+yesSize+=0.15;
+yesBtn.style.transform=`scale(${yesSize})`;
+}
+
+noBtn.addEventListener("mouseover",moveNo);
+noBtn.addEventListener("touchstart",moveNo);
+
+yesBtn.onclick=()=>{
+document.body.innerHTML=`
+<div style="text-align:center;color:white">
+<h1 style="font-size:4rem">YAYYYY ❤️🥰</h1>
+<h2>Best decision ever 💍✨</h2>
+</div>
+`;
+}
+
+for(let i=0;i<30;i++){
+let h=document.createElement("div");
+h.className="heart";
+h.innerHTML="❤️";
+h.style.left=Math.random()*100+"vw";
+h.style.animationDuration=(5+Math.random()*5)+"s";
+h.style.fontSize=(20+Math.random()*30)+"px";
+document.body.appendChild(h);
+}
+</script>
+
+</body>
+</html>
